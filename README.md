@@ -2,34 +2,37 @@
 
 ### usersテーブル
 
-| Column             | Type    | Options     |
-| ------------------ | ------- | ----------- |
-| nickname           | string  | null: false |
-| email              | string  | null: false |
-| encrypted_password | string  | null: false |
-| name               | string  | null: false |
-| birthday           | date    | null: false |
+| Column              | Type    | Options     |
+| ------------------- | ------- | ----------- |
+| nickname            | string  | null: false |
+| email               | string  | null: false |
+| encrypted_password  | string  | null: false |
+| family_name         | string  | null: false |
+| first_name          | string  | null: false |
+| family_name_frigana | string  | null: false |
+| first_name_frigana  | string  | null: false |
+| birthday            | date    | null: false |
 
 ### Association
 - has_many :items
-- has_one :order
+- has_many :orders
 
 ### itemsテーブル
 
-| Column        | Type       | Options                        |
-| ------------- | ---------- | ------------------------------ |
-| title         | string     | null: false                    |
-| explanation   | text       | null: false                    |
-| category      | integer    | null: false                    |
-| status        | integer    | null: false                    |
-| shipping_fee  | integer    | null: false                    |
-| location      | integer    | null: false                    |
-| delivery_time | integer    | null: false                    |
-| selling_price | integer    | null: false                    |
-| user          | references | null: false, foreign_key: true |
+| Column           | Type       | Options                       |
+| ---------------- | ---------- | ------------------------------|
+| title            | string     | null: false                   |
+| explanation      | text       | null: false                   |
+| category_id      | integer    | null: false                   |
+| status_id        | integer    | null: false                   |
+| shipping_fee_id  | integer    | null: false                   |
+| location_id      | integer    | null: false                   |
+| delivery_time_id | integer    | null: false                   |
+| selling_price    | integer    | null: false                   |
+| user             | references | null: false, foreign_key: true|
 
 ### Association
-- belongs to :user
+- belongs_to :user
 - has_one :order
 
 ### ordersテーブル
@@ -40,8 +43,8 @@
 | item   | references  | null: false, foreign_key: true |
 
 ### Association
-- belongs to :user
-- belongs to :item
+- belongs_to :user
+- belongs_to :item
 - has_one :adress
 
 ### addressesテーブル
@@ -49,7 +52,7 @@
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
 | postal_code   | string     | null: false                    |
-| prefecture    | integer    | null: false                    |
+| prefecture_id | integer    | null: false                    |
 | city          | string     | null: false                    |
 | house_number  | string     | null: false                    |
 | building_name | string     |                                |
@@ -57,4 +60,4 @@
 | order         | references | null: false, foreign_key: true |
 
 ### Association
-- belongs to :order
+- belongs_to :order
