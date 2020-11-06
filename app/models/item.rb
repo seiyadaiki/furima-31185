@@ -12,7 +12,7 @@ class Item < ApplicationRecord
 
   with_options presence: true do
     validates :title, length: { maximum: 40 }
-    validates :explanation, length: { maximum: 1000 }
+    validates :explanation, length: { minimum: 7, maximum: 1000 }
     validates :selling_price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
   end
 
