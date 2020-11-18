@@ -52,7 +52,7 @@ RSpec.describe OrderAdress, type: :model do
       @order_adress.valid?
       expect(@order_adress.errors.full_messages).to include('Phone number is invalid. Input half-integer characters')
     end
-    it 'phone_numberが空だと保存できないこと' do
+    it 'tokenが空だと保存できないこと' do
       @order_adress.token = ''
       @order_adress.valid?
       expect(@order_adress.errors.full_messages).to include("Token can't be blank")
