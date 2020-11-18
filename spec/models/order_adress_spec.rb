@@ -9,6 +9,10 @@ RSpec.describe OrderAdress, type: :model do
       it 'すべての値が正しく入力されていれば保存できること' do
         expect(@order_adress).to be_valid
       end
+      it 'building_nameが空でも保存できること' do
+        @order_adress.building_name = ''
+        expect(@order_adress).to be_valid
+      end
     end
     context '購入がうまくいかない時' do
       it 'postal_codeが空だと保存できないこと' do
@@ -40,10 +44,6 @@ RSpec.describe OrderAdress, type: :model do
         @order_adress.house_number = ''
         @order_adress.valid?
         expect(@order_adress.errors.full_messages).to include("House number can't be blank")
-      end
-      it 'building_nameが空でも保存できること' do
-        @order_adress.building_name = ''
-        expect(@order_adress).to be_valid
       end
       it 'phone_numberが空だと保存できないこと' do
         @order_adress.phone_number = ''
