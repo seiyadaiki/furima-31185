@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   before_action :find_item, only: [:index, :create]
   before_action :move_to_root_path, only: [:index, :create]
   before_action :move_to_index
-  
+
   def index
     @order_adress = OrderAdress.new
   end
@@ -43,6 +43,6 @@ class OrdersController < ApplicationController
   end
 
   def move_to_index
-    redirect_to root_path if @item.user == current_user || @item.order != nil
+    redirect_to root_path if @item.user == current_user || !@item.order.nil?
   end
 end
